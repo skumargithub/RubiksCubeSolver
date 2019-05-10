@@ -34,6 +34,18 @@ class Cube(val frontLayer: Layer, val backLayer: Layer, val leftLayer: Layer, va
     bottomLayer + "\n"
   }
 
+  // Reorient the given face to FRONT
+  def reorientToFront(face: Face): Cube = {
+    face match {
+      case BACK => Cube(backLayer, frontLayer, rightLayer, leftLayer, topLayer.flipOrientation(), bottomLayer.flipOrientation())
+      case LEFT => Cube(leftLayer, rightLayer, backLayer, frontLayer, topLayer.reorient(LEFT), bottomLayer.reorient(RIGHT))
+      case RIGHT => Cube(rightLayer, leftLayer, frontLayer, backLayer, topLayer.reorient(RIGHT), bottomLayer.reorient(LEFT))
+      case TOP => Cube(topLayer, bottomLayer, rightLayer.reorient(RIGHT), leftLayer.reorient(LEFT), frontLayer, backLayer)
+      case BOTTOM => Cube(bottomLayer, topLayer, leftLayer.reorient(LEFT), rightLayer.reorient(RIGHT), frontLayer, backLayer)
+      case _ => this // Only remaining FACE is FRONT
+    }
+  }
+
   def move(mv: Move): Cube = {
     mv.face match {
       case FRONT => {
@@ -109,12 +121,15 @@ class Cube(val frontLayer: Layer, val backLayer: Layer, val leftLayer: Layer, va
         Cube(c1.topLayer, c1.bottomLayer, c1.rightLayer.reorient(RIGHT), c1.leftLayer.reorient(LEFT), c1.frontLayer, c1.backLayer)
       }
       case BOTTOM => {
-        // Reorient (BOTTOM becomes FRONT), do the directional move on the FRONT face
-        val c1 = Cube(bottomLayer, topLayer, leftLayer.reorient(LEFT), rightLayer.reorient(RIGHT), backLayer, frontLayer).move(Move(FRONT, mv.direction))
+        // Reorient (BOTTOM becomes FRONT)
+        val cr = Cube(bottomLayer, topLayer, leftLayer.reorient(LEFT), rightLayer.reorient(RIGHT), frontLayer, backLayer)
+        println(s"Reoriented\n ${cr}")
+
+        // Make the rotation
+        val c1 = cr.move(Move(FRONT, mv.direction))
 
         // And reorient (FRONT becomes BOTTOM) it back
-//        Cube(c1.topLayer, c1.bottomLayer, c1.rightLayer.reorient(RIGHT), c1.leftLayer.reorient(LEFT), c1.frontLayer, c1.backLayer)
-        Cube(bottomLayer, topLayer, leftLayer.reorient(LEFT), rightLayer.reorient(RIGHT), backLayer, frontLayer)
+        Cube(c1.bottomLayer, c1.topLayer, c1.leftLayer.reorient(LEFT), c1.rightLayer.reorient(RIGHT), c1.frontLayer, c1.backLayer)
       }
     }
   }
