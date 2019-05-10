@@ -81,74 +81,40 @@ class Cube(val frontLayer: Layer, val backLayer: Layer, val leftLayer: Layer, va
         }
       }
       case BACK => {
-        mv.direction match {
-          case CLOCKWISE => {
-            val c1 = Cube(backLayer, frontLayer, rightLayer, leftLayer, topLayer.flipOrientation(), bottomLayer.flipOrientation()).move(Move(FRONT, CLOCKWISE))
+        // Reorient (BACK becomes the FRONT),  do the directional move on the FRONT face
+        val c1 = Cube(backLayer, frontLayer, rightLayer, leftLayer, topLayer.flipOrientation(), bottomLayer.flipOrientation()).move(Move(FRONT, mv.direction))
 
-            // Now flip it back
-            Cube(c1.backLayer, c1.frontLayer, c1.rightLayer, c1.leftLayer, c1.topLayer.flipOrientation(), c1.bottomLayer.flipOrientation())
-          }
-          case ANTICLOCKWISE=> {
-            val c1 = Cube(backLayer, frontLayer, rightLayer, leftLayer, topLayer.flipOrientation(), bottomLayer.flipOrientation()).move(Move(FRONT, ANTICLOCKWISE))
-
-            // Now flip it back
-            Cube(c1.backLayer, c1.frontLayer, c1.rightLayer, c1.leftLayer, c1.topLayer.flipOrientation(), c1.bottomLayer.flipOrientation())
-          }
-        }
+        // And reorient (FRONT becomes BACK) it back
+        Cube(c1.backLayer, c1.frontLayer, c1.rightLayer, c1.leftLayer, c1.topLayer.flipOrientation(), c1.bottomLayer.flipOrientation())
       }
       case LEFT => {
-        mv.direction match {
-          case CLOCKWISE => {
-            val c1 = Cube(leftLayer, rightLayer, backLayer, frontLayer, topLayer.reorient(LEFT), bottomLayer.reorient(RIGHT))
-//            print(s"reoriented\n ${c1}")
+        // Reorient (LEFT becomes the FRONT),  do the directional move on the FRONT face
+        val c1 = Cube(leftLayer, rightLayer, backLayer, frontLayer, topLayer.reorient(LEFT), bottomLayer.reorient(RIGHT)).move(Move(FRONT, mv.direction))
 
-            val c2 = c1.move(Move(FRONT, CLOCKWISE))
-//            print(s"rotated\n ${c2}")
-
-            // Now flip it back
-            Cube(c2.rightLayer, c2.leftLayer, c2.frontLayer, c2.backLayer, c2.topLayer.reorient(RIGHT), c2.bottomLayer.reorient(LEFT))
-          }
-          case ANTICLOCKWISE=> {
-            val c1 = Cube(leftLayer, rightLayer, backLayer, frontLayer, topLayer.reorient(LEFT), bottomLayer.reorient(RIGHT))
-            //            print(s"reoriented\n ${c1}")
-
-            val c2 = c1.move(Move(FRONT, ANTICLOCKWISE))
-            //            print(s"rotated\n ${c2}")
-
-            // Now flip it back
-            Cube(c2.rightLayer, c2.leftLayer, c2.frontLayer, c2.backLayer, c2.topLayer.reorient(RIGHT), c2.bottomLayer.reorient(LEFT))
-          }
-        }
+        // And reorient (FRONT becomes LEFT) it back
+        Cube(c1.rightLayer, c1.leftLayer, c1.frontLayer, c1.backLayer, c1.topLayer.reorient(RIGHT), c1.bottomLayer.reorient(LEFT))
       }
       case RIGHT => {
-        mv.direction match {
-          case CLOCKWISE => {
-            val c1 = Cube(rightLayer, leftLayer, frontLayer, backLayer, topLayer.reorient(RIGHT), bottomLayer.reorient(LEFT))
-            //            print(s"reoriented\n ${c1}")
+        // Reorient (RIGHT becomes the FRONT),  do the directional move on the FRONT face
+        val c1 = Cube(rightLayer, leftLayer, frontLayer, backLayer, topLayer.reorient(RIGHT), bottomLayer.reorient(LEFT)).move(Move(FRONT, mv.direction))
 
-            val c2 = c1.move(Move(FRONT, CLOCKWISE))
-            //            print(s"rotated\n ${c2}")
-
-            // Now flip it back
-            Cube(c2.leftLayer, c2.rightLayer, c2.backLayer, c2.frontLayer, c2.topLayer.reorient(LEFT), c2.bottomLayer.reorient(RIGHT))
-          }
-          case ANTICLOCKWISE=> {
-            val c1 = Cube(rightLayer, leftLayer, frontLayer, backLayer, topLayer.reorient(RIGHT), bottomLayer.reorient(LEFT))
-            //            print(s"reoriented\n ${c1}")
-
-            val c2 = c1.move(Move(FRONT, ANTICLOCKWISE))
-            //            print(s"rotated\n ${c2}")
-
-            // Now flip it back
-            Cube(c2.leftLayer, c2.rightLayer, c2.backLayer, c2.frontLayer, c2.topLayer.reorient(LEFT), c2.bottomLayer.reorient(RIGHT))
-          }
-        }
+        // And reorient (FRONT becomes RIGHT) it back
+        Cube(c1.leftLayer, c1.rightLayer, c1.backLayer, c1.frontLayer, c1.topLayer.reorient(LEFT), c1.bottomLayer.reorient(RIGHT))
       }
       case TOP => {
-        new Cube(frontLayer, backLayer, leftLayer, rightLayer, topLayer.move(mv.direction), bottomLayer)
+        // Reorient (TOP becomes FRONT), do the directional move on the FRONT face
+        val c1 = Cube(topLayer, bottomLayer, rightLayer.reorient(RIGHT), leftLayer.reorient(LEFT), frontLayer, backLayer).move(Move(FRONT, mv.direction))
+
+        // And reorient (FRONT becomes TOP) it back
+        Cube(c1.topLayer, c1.bottomLayer, c1.rightLayer.reorient(RIGHT), c1.leftLayer.reorient(LEFT), c1.frontLayer, c1.backLayer)
       }
       case BOTTOM => {
-        new Cube(frontLayer, backLayer, leftLayer, rightLayer, topLayer, bottomLayer.move(mv.direction))
+        // Reorient (BOTTOM becomes FRONT), do the directional move on the FRONT face
+        val c1 = Cube(bottomLayer, topLayer, leftLayer.reorient(LEFT), rightLayer.reorient(RIGHT), backLayer, frontLayer).move(Move(FRONT, mv.direction))
+
+        // And reorient (FRONT becomes BOTTOM) it back
+//        Cube(c1.topLayer, c1.bottomLayer, c1.rightLayer.reorient(RIGHT), c1.leftLayer.reorient(LEFT), c1.frontLayer, c1.backLayer)
+        Cube(bottomLayer, topLayer, leftLayer.reorient(LEFT), rightLayer.reorient(RIGHT), backLayer, frontLayer)
       }
     }
   }
