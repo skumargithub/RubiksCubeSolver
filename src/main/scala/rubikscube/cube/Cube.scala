@@ -40,8 +40,8 @@ class Cube(val frontLayer: Layer, val backLayer: Layer, val leftLayer: Layer, va
       case BACK => Cube(backLayer, frontLayer, rightLayer, leftLayer, topLayer.flipOrientation(), bottomLayer.flipOrientation())
       case LEFT => Cube(leftLayer, rightLayer, backLayer, frontLayer, topLayer.reorient(LEFT), bottomLayer.reorient(RIGHT))
       case RIGHT => Cube(rightLayer, leftLayer, frontLayer, backLayer, topLayer.reorient(RIGHT), bottomLayer.reorient(LEFT))
-      case TOP => Cube(topLayer, bottomLayer, rightLayer.reorient(RIGHT), leftLayer.reorient(LEFT), frontLayer, backLayer)
-      case BOTTOM => Cube(bottomLayer, topLayer, leftLayer.reorient(LEFT), rightLayer.reorient(RIGHT), frontLayer, backLayer)
+      case TOP => Cube(topLayer, bottomLayer.flipOrientation(), rightLayer.reorient(RIGHT), leftLayer.reorient(LEFT), frontLayer, backLayer.flipOrientation())
+      case BOTTOM => Cube(bottomLayer, topLayer.flipOrientation(), rightLayer.reorient(LEFT), leftLayer.reorient(RIGHT), backLayer.flipOrientation(), frontLayer)
       case _ => this // Only remaining FACE is FRONT
     }
   }
@@ -158,8 +158,8 @@ object Cube {
     new Edge(ORANGE, WHITE), new Edge(ORANGE, GREEN), new Edge(ORANGE, YELLOW), new Edge(ORANGE, BLUE))
 
   val bottomLayer = new Layer(RED,
-    new Vertex(RED, GREEN, WHITE), new Vertex(RED, WHITE, BLUE), new Vertex(RED, BLUE, YELLOW), new Vertex(RED, YELLOW, GREEN),
-    new Edge(RED, WHITE), new Edge(RED, BLUE), new Edge(RED, YELLOW), new Edge(RED, GREEN))
+    new Vertex(RED, BLUE, YELLOW), new Vertex(RED, YELLOW, GREEN), new Vertex(RED, GREEN, WHITE), new Vertex(RED, WHITE, BLUE),
+    new Edge(RED, YELLOW), new Edge(RED, GREEN), new Edge(RED, WHITE), new Edge(RED, BLUE))
 
   val solvedCube = new Cube(frontLayer, backLayer, leftLayer, rightLayer, topLayer, bottomLayer)
 

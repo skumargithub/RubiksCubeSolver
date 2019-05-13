@@ -34,7 +34,7 @@ class LayerSuite extends FunSuite {
     val layer2 = new Layer(faceColor,
       topLeftVertex, topRightVertex, bottomRightVertex, bottomLeftVertex,
       topEdge, rightEdge, bottomEdge, leftEdge)
-    assert(layer1.equals(layer2)) == true
+    assert(layer1.equals(layer2) == true)
 
     val layer3 = new Layer(BLUE,
       topLeftVertex, topRightVertex, bottomRightVertex, bottomLeftVertex,
