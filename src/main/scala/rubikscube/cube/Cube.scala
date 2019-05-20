@@ -53,8 +53,8 @@ class Cube(val frontLayer: Layer, val backLayer: Layer, val leftLayer: Layer, va
           case CLOCKWISE => {
             val newFrontLayer = frontLayer.move(mv.direction)
             val newLeftLayer = new Layer(leftLayer.faceColor,
-              leftLayer.topLeftVertex, bottomLayer.topLeftVertex, bottomLayer.topRightVertex, leftLayer.bottomLeftVertex,
-              leftLayer.topEdge, bottomLayer.topEdge, leftLayer.bottomEdge, leftLayer.leftEdge)
+              leftLayer.topLeftVertex, bottomLayer.bottomRightVertex, bottomLayer.bottomLeftVertex, leftLayer.bottomLeftVertex,
+              leftLayer.topEdge, bottomLayer.bottomEdge, leftLayer.bottomEdge, leftLayer.leftEdge)
 
             val newRightLayer = new Layer(rightLayer.faceColor,
               topLayer.topRightVertex, rightLayer.topRightVertex, rightLayer.bottomRightVertex, topLayer.topLeftVertex,
@@ -65,8 +65,8 @@ class Cube(val frontLayer: Layer, val backLayer: Layer, val leftLayer: Layer, va
               leftLayer.rightEdge, topLayer.rightEdge, topLayer.bottomEdge, topLayer.leftEdge)
 
             val newBottomLayer = new Layer(bottomLayer.faceColor,
-              rightLayer.bottomLeftVertex, rightLayer.topLeftVertex, bottomLayer.bottomRightVertex, bottomLayer.bottomLeftVertex,
-              rightLayer.leftEdge, bottomLayer.rightEdge, bottomLayer.bottomEdge, bottomLayer.leftEdge)
+              bottomLayer.topLeftVertex, bottomLayer.topRightVertex, rightLayer.bottomLeftVertex, rightLayer.topLeftVertex,
+              bottomLayer.topEdge, bottomLayer.rightEdge, rightLayer.leftEdge, bottomLayer.leftEdge)
 
             new Cube(newFrontLayer, backLayer, newLeftLayer, newRightLayer, newTopLayer, newBottomLayer)
           }
@@ -77,16 +77,16 @@ class Cube(val frontLayer: Layer, val backLayer: Layer, val leftLayer: Layer, va
               leftLayer.topEdge, topLayer.topEdge, leftLayer.bottomEdge, leftLayer.leftEdge)
 
             val newRightLayer = new Layer(rightLayer.faceColor,
-              bottomLayer.topRightVertex, rightLayer.topRightVertex, rightLayer.bottomRightVertex, bottomLayer.topLeftVertex,
-              rightLayer.topEdge, rightLayer.rightEdge, rightLayer.bottomEdge, bottomLayer.topEdge)
+              bottomLayer.bottomLeftVertex, rightLayer.topRightVertex, rightLayer.bottomRightVertex, bottomLayer.bottomRightVertex,
+              rightLayer.topEdge, rightLayer.rightEdge, rightLayer.bottomEdge, bottomLayer.bottomEdge)
 
             val newTopLayer = new Layer(topLayer.faceColor,
               rightLayer.bottomLeftVertex, rightLayer.topLeftVertex, topLayer.bottomRightVertex, topLayer.bottomLeftVertex,
               rightLayer.leftEdge, topLayer.rightEdge, topLayer.bottomEdge, topLayer.leftEdge)
 
             val newBottomLayer = new Layer(bottomLayer.faceColor,
-              leftLayer.topRightVertex, leftLayer.bottomRightVertex, bottomLayer.bottomRightVertex, bottomLayer.bottomLeftVertex,
-              leftLayer.rightEdge, bottomLayer.rightEdge, bottomLayer.bottomEdge, bottomLayer.leftEdge)
+              bottomLayer.topLeftVertex, bottomLayer.topRightVertex, leftLayer.topRightVertex, leftLayer.bottomRightVertex,
+              bottomLayer.topEdge, bottomLayer.rightEdge, leftLayer.rightEdge, bottomLayer.leftEdge)
 
             new Cube(newFrontLayer, backLayer, newLeftLayer, newRightLayer, newTopLayer, newBottomLayer)
           }

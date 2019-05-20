@@ -179,7 +179,7 @@ class ReorientSuite extends FunSuite {
   test("RIGHT reoriented TO FRONT") {
     // Reorient RIGHT to FRONT
     val cr = Cube.solvedCube.reorientToFront(RIGHT)
-    println(s"RIGHT Reoriented\n ${cr}")
+//    println(s"RIGHT Reoriented\n ${cr}")
     assert(Cube.solvedCube.equals(cr) == false)
 
     val frontLayer = new Layer(BLUE,
@@ -206,12 +206,12 @@ class ReorientSuite extends FunSuite {
       new Vertex(RED, YELLOW, GREEN), new Vertex(RED, GREEN, WHITE), new Vertex(RED, WHITE, BLUE), new Vertex(RED, BLUE, YELLOW),
       new Edge(RED, GREEN), new Edge(RED, WHITE), new Edge(RED, BLUE), new Edge(RED, YELLOW))
 
-    val c1 = new Cube(frontLayer, backLayer, leftLayer, rightLayer, topLayer, bottomLayer)
-    //    println(s"Generated Reoriented\n ${c1}")
-    assert(cr.equals(c1) == true)
+    val cg = new Cube(frontLayer, backLayer, leftLayer, rightLayer, topLayer, bottomLayer)
+    //    println(s"Generated Reoriented\n ${cg}")
+    assert(cr.equals(cg) == true)
 
     // Now reorient LEFT to FRONT to get back the original cube
-    val c3 = cr.reorientToFront(RIGHT)
+    val c3 = cr.reorientToFront(LEFT)
 //    println(s"Reoriented back\n ${c3}")
     assert(c3.equals(Cube.solvedCube) == true)
   }
