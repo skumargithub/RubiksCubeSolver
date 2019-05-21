@@ -236,4 +236,78 @@ class MoveSuite extends FunSuite {
     val c1 = cm.move(Move(LEFT, CLOCKWISE))
     assert(Cube.solvedCube.equals(c1) == true)
   }
+
+  test("Move RIGHT in CLOCKWISE direction") {
+    val cm = Cube.solvedCube.move(Move(RIGHT, CLOCKWISE))
+//    println(s"RIGHT CLOCKWISE\n ${cm}")
+
+    val frontLayer = new Layer(WHITE,
+      new Vertex(WHITE, GREEN, ORANGE), new Vertex(RED, WHITE, BLUE), new Vertex(RED, BLUE, YELLOW), new Vertex(WHITE, RED, GREEN),
+      new Edge(WHITE, ORANGE), new Edge(RED, BLUE), new Edge(WHITE, RED), new Edge(WHITE, GREEN))
+
+    val backLayer = new Layer(YELLOW,
+      new Vertex(ORANGE, BLUE, WHITE), new Vertex(YELLOW, ORANGE, GREEN), new Vertex(YELLOW, GREEN, RED), new Vertex(ORANGE, YELLOW, BLUE),
+      new Edge(YELLOW, ORANGE), new Edge(YELLOW, GREEN), new Edge(YELLOW, RED), new Edge(ORANGE, BLUE))
+
+    val leftLayer = new Layer(GREEN,
+      new Vertex(GREEN, YELLOW, ORANGE), new Vertex(GREEN, ORANGE, WHITE), new Vertex(GREEN, WHITE, RED), new Vertex(GREEN, RED, YELLOW),
+      new Edge(GREEN, ORANGE), new Edge(GREEN, WHITE), new Edge(GREEN, RED), new Edge(GREEN, YELLOW))
+
+    val rightLayer = new Layer(BLUE,
+      new Vertex(BLUE, RED, WHITE), new Vertex(BLUE, WHITE, ORANGE), new Vertex(BLUE, ORANGE, YELLOW), new Vertex(BLUE, YELLOW, RED),
+      new Edge(BLUE, WHITE), new Edge(BLUE, ORANGE), new Edge(BLUE, YELLOW), new Edge(BLUE, RED))
+
+    val topLayer = new Layer(ORANGE,
+      new Vertex(WHITE, BLUE, RED), new Vertex(ORANGE, WHITE, GREEN), new Vertex(ORANGE, GREEN, YELLOW), new Vertex(WHITE, ORANGE, BLUE),
+      new Edge(ORANGE, WHITE), new Edge(ORANGE, GREEN), new Edge(ORANGE, YELLOW), new Edge(WHITE, BLUE))
+
+    val bottomLayer = new Layer(RED,
+      new Vertex(YELLOW, BLUE, ORANGE), new Vertex(RED, YELLOW, GREEN), new Vertex(RED, GREEN, WHITE), new Vertex(YELLOW, RED, BLUE),
+      new Edge(RED, YELLOW), new Edge(RED, GREEN), new Edge(RED, WHITE), new Edge(YELLOW, BLUE))
+
+    val cg = new Cube(frontLayer, backLayer, leftLayer, rightLayer, topLayer, bottomLayer)
+//    println(s"Generated Move RIGHT in CLOCKWISE direction\n ${cg}")
+    assert(cm.equals(cg) == true)
+
+    // Now, move RIGHT in ANTICLOCKWISE to get back the original cube
+    val c1 = cm.move(Move(RIGHT, ANTICLOCKWISE))
+    assert(Cube.solvedCube.equals(c1) == true)
+  }
+
+  test("Move RIGHT in ANTICLOCKWISE direction") {
+    val cm = Cube.solvedCube.move(Move(RIGHT, ANTICLOCKWISE))
+//    println(s"RIGHT ANTICLOCKWISE\n ${cm}")
+
+    val frontLayer = new Layer(WHITE,
+      new Vertex(WHITE, GREEN, ORANGE), new Vertex(ORANGE, YELLOW, BLUE), new Vertex(ORANGE, BLUE, WHITE), new Vertex(WHITE, RED, GREEN),
+      new Edge(WHITE, ORANGE), new Edge(ORANGE, BLUE), new Edge(WHITE, RED), new Edge(WHITE, GREEN))
+
+    val backLayer = new Layer(YELLOW,
+      new Vertex(RED, BLUE, YELLOW), new Vertex(YELLOW, ORANGE, GREEN), new Vertex(YELLOW, GREEN, RED), new Vertex(RED, WHITE, BLUE),
+      new Edge(YELLOW, ORANGE), new Edge(YELLOW, GREEN), new Edge(YELLOW, RED), new Edge(RED, BLUE))
+
+    val leftLayer = new Layer(GREEN,
+      new Vertex(GREEN, YELLOW, ORANGE), new Vertex(GREEN, ORANGE, WHITE), new Vertex(GREEN, WHITE, RED), new Vertex(GREEN, RED, YELLOW),
+      new Edge(GREEN, ORANGE), new Edge(GREEN, WHITE), new Edge(GREEN, RED), new Edge(GREEN, YELLOW))
+
+    val rightLayer = new Layer(BLUE,
+      new Vertex(BLUE, ORANGE, YELLOW), new Vertex(BLUE, YELLOW, RED), new Vertex(BLUE, RED, WHITE), new Vertex(BLUE, WHITE, ORANGE),
+      new Edge(BLUE, YELLOW), new Edge(BLUE, RED), new Edge(BLUE, WHITE), new Edge(BLUE, ORANGE))
+
+    val topLayer = new Layer(ORANGE,
+      new Vertex(YELLOW, BLUE, ORANGE), new Vertex(ORANGE, WHITE, GREEN), new Vertex(ORANGE, GREEN, YELLOW), new Vertex(YELLOW, RED, BLUE),
+      new Edge(ORANGE, WHITE), new Edge(ORANGE, GREEN), new Edge(ORANGE, YELLOW), new Edge(YELLOW, BLUE))
+
+    val bottomLayer = new Layer(RED,
+      new Vertex(WHITE, BLUE, RED), new Vertex(RED, YELLOW, GREEN), new Vertex(RED, GREEN, WHITE), new Vertex(WHITE, ORANGE, BLUE),
+      new Edge(RED, YELLOW), new Edge(RED, GREEN), new Edge(RED, WHITE), new Edge(WHITE, BLUE))
+
+    val cg = new Cube(frontLayer, backLayer, leftLayer, rightLayer, topLayer, bottomLayer)
+    //    println(s"Generated Move RIGHT in CLOCKWISE direction\n ${cg}")
+    assert(cm.equals(cg) == true)
+
+    // Now, move RIGHT in CLOCKWISE to get back the original cube
+    val c1 = cm.move(Move(RIGHT, CLOCKWISE))
+    assert(Cube.solvedCube.equals(c1) == true)
+  }
 }
