@@ -58,7 +58,7 @@ class Cube(val frontLayer: Layer, val backLayer: Layer, val leftLayer: Layer, va
 
             val newRightLayer = new Layer(rightLayer.faceColor,
               topLayer.topRightVertex, rightLayer.topRightVertex, rightLayer.bottomRightVertex, topLayer.topLeftVertex,
-              rightLayer.topEdge, rightLayer.rightEdge, rightLayer.bottomEdge, frontLayer.topEdge.flip())
+              rightLayer.topEdge, rightLayer.rightEdge, rightLayer.bottomEdge, topLayer.topEdge)
 
             val newTopLayer = new Layer(topLayer.faceColor,
               leftLayer.topRightVertex, leftLayer.bottomRightVertex, topLayer.bottomRightVertex, topLayer.bottomLeftVertex,
