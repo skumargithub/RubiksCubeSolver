@@ -3,7 +3,11 @@ package rubikscube.meta
 import rubikscube.meta.Direction._
 import rubikscube.meta.Face._
 
-class Move(val face: Face, val direction: Direction)
+class Move(val face: Face, val direction: Direction) {
+  override def toString(): String = {
+    s"face: ${face}, direction: $direction"
+  }
+}
 
 object Move {
   def apply(face: Face, direction: Direction): Move = {
@@ -27,5 +31,12 @@ object Move {
 
   val BOTTOM_CLOCKWISE = Move(BOTTOM, CLOCKWISE)
   val BOTTOM_ANTICLOCKWISE = Move(BOTTOM, ANTICLOCKWISE)
+
+  val ALL_MOVES = Set(FRONT_CLOCKWISE, FRONT_ANTICLOCKWISE,
+                      BACK_CLOCKWISE, BACK_ANTICLOCKWISE,
+                      LEFT_CLOCKWISE, LEFT_ANTICLOCKWISE,
+                      RIGHT_CLOCKWISE, RIGHT_ANTICLOCKWISE,
+                      TOP_CLOCKWISE, TOP_ANTICLOCKWISE,
+                      BOTTOM_CLOCKWISE, BOTTOM_ANTICLOCKWISE)
 }
 
