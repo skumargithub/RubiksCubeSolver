@@ -5,12 +5,10 @@ import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 
 import rubikscube.cube._
-import rubikscube.meta.Face._
-import rubikscube.meta.Direction._
 import rubikscube.meta.Move
 
 @RunWith(classOf[JUnitRunner])
-class SolverSuite extends FunSuite {
+class OneTwoMoveSolverSuite extends FunSuite {
   test("One move") {
     val solver = new Solver
 
@@ -18,18 +16,18 @@ class SolverSuite extends FunSuite {
     {
       val start = Cube.solvedCube.move(Move.FRONT_CLOCKWISE)
       val moves: List[Move] = solver.solve(start, Cube.solvedCube, 1)
-      println(s"moves: ${moves.head}")
+//      println(s"moves: ${moves.head}")
 
-      assert(moves.equals(List(Move.FRONT_ANTICLOCKWISE)) == true)
+      assert(moves.equals(List(Move.FRONT_ANTICLOCKWISE)))
     }
 
     {
       val start = Cube.solvedCube.move(Move.FRONT_ANTICLOCKWISE)
 
       val moves: List[Move] = solver.solve(start, Cube.solvedCube, 1)
-      println(s"moves: ${moves.head}")
+//      println(s"moves: ${moves.head}")
 
-      assert(moves.equals(List(Move.FRONT_CLOCKWISE)) == true)
+      assert(moves.equals(List(Move.FRONT_CLOCKWISE)))
     }
 
     // Back
@@ -37,18 +35,18 @@ class SolverSuite extends FunSuite {
       val start = Cube.solvedCube.move(Move.BACK_CLOCKWISE)
 
       val moves: List[Move] = solver.solve(start, Cube.solvedCube, 1)
-      println(s"moves: ${moves.head}")
+//      println(s"moves: ${moves.head}")
 
-      assert(moves.equals(List(Move.BACK_ANTICLOCKWISE)) == true)
+      assert(moves.equals(List(Move.BACK_ANTICLOCKWISE)))
     }
 
     {
       val start = Cube.solvedCube.move(Move.BACK_ANTICLOCKWISE)
 
       val moves: List[Move] = solver.solve(start, Cube.solvedCube, 1)
-      println(s"moves: ${moves.head}")
+//      println(s"moves: ${moves.head}")
 
-      assert(moves.equals(List(Move.BACK_CLOCKWISE)) == true)
+      assert(moves.equals(List(Move.BACK_CLOCKWISE)))
     }
 
     // Left
@@ -56,18 +54,18 @@ class SolverSuite extends FunSuite {
       val start = Cube.solvedCube.move(Move.LEFT_CLOCKWISE)
 
       val moves: List[Move] = solver.solve(start, Cube.solvedCube, 1)
-      println(s"moves: ${moves.head}")
+//      println(s"moves: ${moves.head}")
 
-      assert(moves.equals(List(Move.LEFT_ANTICLOCKWISE)) == true)
+      assert(moves.equals(List(Move.LEFT_ANTICLOCKWISE)))
     }
 
     {
       val start = Cube.solvedCube.move(Move.LEFT_ANTICLOCKWISE)
 
       val moves: List[Move] = solver.solve(start, Cube.solvedCube, 1)
-      println(s"moves: ${moves.head}")
+//      println(s"moves: ${moves.head}")
 
-      assert(moves.equals(List(Move.LEFT_CLOCKWISE)) == true)
+      assert(moves.equals(List(Move.LEFT_CLOCKWISE)))
     }
 
     // Right
@@ -75,18 +73,18 @@ class SolverSuite extends FunSuite {
       val start = Cube.solvedCube.move(Move.RIGHT_CLOCKWISE)
 
       val moves: List[Move] = solver.solve(start, Cube.solvedCube, 1)
-      println(s"moves: ${moves.head}")
+//      println(s"moves: ${moves.head}")
 
-      assert(moves.equals(List(Move.RIGHT_ANTICLOCKWISE)) == true)
+      assert(moves.equals(List(Move.RIGHT_ANTICLOCKWISE)))
     }
 
     {
       val start = Cube.solvedCube.move(Move.RIGHT_ANTICLOCKWISE)
 
       val moves: List[Move] = solver.solve(start, Cube.solvedCube, 1)
-      println(s"moves: ${moves.head}")
+//      println(s"moves: ${moves.head}")
 
-      assert(moves.equals(List(Move.RIGHT_CLOCKWISE)) == true)
+      assert(moves.equals(List(Move.RIGHT_CLOCKWISE)))
     }
 
     // Top
@@ -94,18 +92,18 @@ class SolverSuite extends FunSuite {
       val start = Cube.solvedCube.move(Move.TOP_CLOCKWISE)
 
       val moves: List[Move] = solver.solve(start, Cube.solvedCube, 1)
-      println(s"moves: ${moves.head}")
+//      println(s"moves: ${moves.head}")
 
-      assert(moves.equals(List(Move.TOP_ANTICLOCKWISE)) == true)
+      assert(moves.equals(List(Move.TOP_ANTICLOCKWISE)))
     }
 
     {
       val start = Cube.solvedCube.move(Move.TOP_ANTICLOCKWISE)
 
       val moves: List[Move] = solver.solve(start, Cube.solvedCube, 1)
-      println(s"moves: ${moves.head}")
+//      println(s"moves: ${moves.head}")
 
-      assert(moves.equals(List(Move.TOP_CLOCKWISE)) == true)
+      assert(moves.equals(List(Move.TOP_CLOCKWISE)))
     }
 
     // Bottom
@@ -113,18 +111,18 @@ class SolverSuite extends FunSuite {
       val start = Cube.solvedCube.move(Move.BOTTOM_CLOCKWISE)
 
       val moves: List[Move] = solver.solve(start, Cube.solvedCube, 1)
-      println(s"moves: ${moves.head}")
+//      println(s"moves: ${moves.head}")
 
-      assert(moves.equals(List(Move.BOTTOM_ANTICLOCKWISE)) == true)
+      assert(moves.equals(List(Move.BOTTOM_ANTICLOCKWISE)))
     }
 
     {
       val start = Cube.solvedCube.move(Move.BOTTOM_ANTICLOCKWISE)
 
       val moves: List[Move] = solver.solve(start, Cube.solvedCube, 1)
-      println(s"moves: ${moves.head}")
+//      println(s"moves: ${moves.head}")
 
-      assert(moves.equals(List(Move.BOTTOM_CLOCKWISE)) == true)
+      assert(moves.equals(List(Move.BOTTOM_CLOCKWISE)))
     }
   }
 
