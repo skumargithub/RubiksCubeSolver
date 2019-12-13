@@ -10,6 +10,7 @@ import rubikscube.meta.{Direction, Face, Move}
 import scala.collection.mutable
 import scala.collection.mutable.Set
 
+@RunWith(classOf[JUnitRunner])
 class AllUniqeFacesMoveSuite extends FunSuite {
   def getUniqueFaces(numFaces: Int): Set[Face] = {
     val rnd = scala.util.Random
@@ -29,31 +30,32 @@ class AllUniqeFacesMoveSuite extends FunSuite {
     val rnd = scala.util.Random
 
     for(numFaces <- 1 to Face.ALL_FACES.size) {
-      for (i <- 0 to 100) {
-        // Generate 3 random moves consisting of 3 unique faces and a direction (CLOCKWISE or ANTICLOCKWISE)
-        val moves = mutable.ListBuffer[Move]()
-        val oppositeMoves = mutable.ListBuffer[Move]()
-        val allDirections = Direction.ALL_DIRECTIONS.toArray
-        for (face <- getUniqueFaces(numFaces)) {
-          val direction: Direction = allDirections(rnd.nextInt(2))
-          moves += Move(face, direction)
-          oppositeMoves += Move(face, direction.oppose())
-        }
-        //    println(s"moves: $moves")
+//        println(s"# of Faces: ${numFaces}")
 
-        // Move the solved cube using the generated 3 moves
-        val targetCube = moves.foldLeft(Cube.solvedCube)(_ move _)
-        //    println(s"targetCube: $targetCube")
+      val moves = mutable.ListBuffer[Move]()
+      val oppositeMoves = mutable.ListBuffer[Move]()
 
-        // Now solve the moved cube to the perfect cube
-        val solutions = solver.solve(targetCube, Cube.solvedCube, 3)
-        //    println(solutions)
+      val allDirections = Direction.ALL_DIRECTIONS.toArray
 
-        // We should only have 1 solution and the moves should be opposite to the original move sequence
-        // eg: [(FRONT, CLOCKWISE), (BACK, ANTI_CLOCKWISE), (BOTTOM, CLOCKWISE)] => [(BOTTOM, ANTI_CLOCKWISE), (BACK, CLOCKWISE), (FRONT, ANTI_CLOCKWISE)]
-//        assert(solutions.size == 1)
-//        assert(solutions.contains oppositeMoves.reverse)
+        // Generate random moves consisting of numFaces unique faces and a direction (CLOCKWISE or ANTICLOCKWISE)
+      for (face <- getUniqueFaces(numFaces)) {
+        val direction: Direction = allDirections(rnd.nextInt(2))
+        moves += Move(face, direction)
+        oppositeMoves.prepend(Move(face, direction.oppose()))
       }
+      //    println(s"moves: $moves")
+
+      // Move the solved cube using the generated moves
+      val targetCube = moves.foldLeft(Cube.solvedCube)(_ move _)
+      //    println(s"targetCube: $targetCube")
+
+      // Now solve the moved cube to the perfect cube
+      val solutions = solver.solve(targetCube, Cube.solvedCube, numFaces)
+      //    println(solutions)
+
+      // One of the solutions will be the reverse to the original move sequence
+      // eg: [(FRONT, CLOCKWISE), (BACK, ANTI_CLOCKWISE), (BOTTOM, CLOCKWISE)] => [(BOTTOM, ANTI_CLOCKWISE), (BACK, CLOCKWISE), (FRONT, ANTI_CLOCKWISE)]
+      assert(solutions.contains(oppositeMoves.toList))
     }
   }
 
