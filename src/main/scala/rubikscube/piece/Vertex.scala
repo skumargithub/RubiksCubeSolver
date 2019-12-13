@@ -1,7 +1,6 @@
 package rubikscube.piece
 
-import rubikscube.meta.Color._
-import rubikscube.meta.Direction._
+import rubikscube.meta.Color
 
 // In clockwise order starting with the front face
 sealed class Vertex(val surface1: Color, val surface2: Color, val surface3: Color,

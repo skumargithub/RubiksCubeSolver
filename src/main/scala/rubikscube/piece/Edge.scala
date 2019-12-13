@@ -1,9 +1,6 @@
 package rubikscube.piece
 
-import rubikscube.cube.Layer
-import rubikscube.meta.Color._
-import rubikscube.meta.Direction.{ANTICLOCKWISE, CLOCKWISE}
-import rubikscube.meta.Move
+import rubikscube.meta.Color
 
 // Inside and then outside
 sealed class Edge(val surface1: Color, val surface2: Color, val surface1Match: Boolean = true, val surface2Match: Boolean = true) {

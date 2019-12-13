@@ -3,53 +3,53 @@ package rubikscube.meta
 import rubikscube.meta.Direction._
 import rubikscube.meta.Face._
 
-case class Move(val face: Face, val direction: Direction) {
+case class Move private (face: Face, direction: Direction) {
   override def toString(): String = {
     s"face: ${face}, direction: $direction"
   }
 
   def oppose(): Move = {
     this match {
-      case Move.FRONT_CLOCKWISE => Move.FRONT_ANTICLOCKWISE
-      case Move.FRONT_ANTICLOCKWISE => Move.FRONT_CLOCKWISE
-      case Move.BACK_CLOCKWISE => Move.BACK_ANTICLOCKWISE
-      case Move.BACK_ANTICLOCKWISE => Move.BACK_CLOCKWISE
-      case Move.LEFT_CLOCKWISE => Move.LEFT_ANTICLOCKWISE
-      case Move.LEFT_ANTICLOCKWISE => Move.LEFT_CLOCKWISE
-      case Move.RIGHT_CLOCKWISE => Move.RIGHT_ANTICLOCKWISE
-      case Move.RIGHT_ANTICLOCKWISE => Move.RIGHT_CLOCKWISE
-      case Move.TOP_CLOCKWISE => Move.TOP_ANTICLOCKWISE
-      case Move.TOP_ANTICLOCKWISE => Move.TOP_CLOCKWISE
-      case Move.BOTTOM_CLOCKWISE => Move.BOTTOM_ANTICLOCKWISE
-      case Move.BOTTOM_ANTICLOCKWISE => Move.BOTTOM_CLOCKWISE
-      case _ => throw new UnsupportedOperationException("Unknown move")
+      case Move.FRONT_CLOCKWISE => Move.FRONT_ANTI_CLOCKWISE
+      case Move.FRONT_ANTI_CLOCKWISE => Move.FRONT_CLOCKWISE
+      case Move.BACK_CLOCKWISE => Move.BACK_ANTI_CLOCKWISE
+      case Move.BACK_ANTI_CLOCKWISE => Move.BACK_CLOCKWISE
+      case Move.LEFT_CLOCKWISE => Move.LEFT_ANTI_CLOCKWISE
+      case Move.LEFT_ANTI_CLOCKWISE => Move.LEFT_CLOCKWISE
+      case Move.RIGHT_CLOCKWISE => Move.RIGHT_ANTI_CLOCKWISE
+      case Move.RIGHT_ANTI_CLOCKWISE => Move.RIGHT_CLOCKWISE
+      case Move.TOP_CLOCKWISE => Move.TOP_ANTI_CLOCKWISE
+      case Move.TOP_ANTI_CLOCKWISE => Move.TOP_CLOCKWISE
+      case Move.BOTTOM_CLOCKWISE => Move.BOTTOM_ANTI_CLOCKWISE
+      case Move.BOTTOM_ANTI_CLOCKWISE => Move.BOTTOM_CLOCKWISE
+      case _ => throw new IllegalStateException("Unknown move")
     }
   }
 }
 
 object Move {
   val FRONT_CLOCKWISE = Move(FRONT, CLOCKWISE)
-  val FRONT_ANTICLOCKWISE = Move(FRONT, ANTICLOCKWISE)
+  val FRONT_ANTI_CLOCKWISE = Move(FRONT, ANTI_CLOCKWISE)
 
   val BACK_CLOCKWISE = Move(BACK, CLOCKWISE)
-  val BACK_ANTICLOCKWISE = Move(BACK, ANTICLOCKWISE)
+  val BACK_ANTI_CLOCKWISE = Move(BACK, ANTI_CLOCKWISE)
 
   val LEFT_CLOCKWISE = Move(LEFT, CLOCKWISE)
-  val LEFT_ANTICLOCKWISE = Move(LEFT, ANTICLOCKWISE)
+  val LEFT_ANTI_CLOCKWISE = Move(LEFT, ANTI_CLOCKWISE)
 
   val RIGHT_CLOCKWISE = Move(RIGHT, CLOCKWISE)
-  val RIGHT_ANTICLOCKWISE = Move(RIGHT, ANTICLOCKWISE)
+  val RIGHT_ANTI_CLOCKWISE = Move(RIGHT, ANTI_CLOCKWISE)
 
   val TOP_CLOCKWISE = Move(TOP, CLOCKWISE)
-  val TOP_ANTICLOCKWISE = Move(TOP, ANTICLOCKWISE)
+  val TOP_ANTI_CLOCKWISE = Move(TOP, ANTI_CLOCKWISE)
 
   val BOTTOM_CLOCKWISE = Move(BOTTOM, CLOCKWISE)
-  val BOTTOM_ANTICLOCKWISE = Move(BOTTOM, ANTICLOCKWISE)
+  val BOTTOM_ANTI_CLOCKWISE = Move(BOTTOM, ANTI_CLOCKWISE)
 
-  val ALL_MOVES = Set(FRONT_CLOCKWISE, FRONT_ANTICLOCKWISE,
-                      BACK_CLOCKWISE, BACK_ANTICLOCKWISE,
-                      LEFT_CLOCKWISE, LEFT_ANTICLOCKWISE,
-                      RIGHT_CLOCKWISE, RIGHT_ANTICLOCKWISE,
-                      TOP_CLOCKWISE, TOP_ANTICLOCKWISE,
-                      BOTTOM_CLOCKWISE, BOTTOM_ANTICLOCKWISE)
+  val ALL_MOVES = Set(FRONT_CLOCKWISE, FRONT_ANTI_CLOCKWISE,
+                      BACK_CLOCKWISE, BACK_ANTI_CLOCKWISE,
+                      LEFT_CLOCKWISE, LEFT_ANTI_CLOCKWISE,
+                      RIGHT_CLOCKWISE, RIGHT_ANTI_CLOCKWISE,
+                      TOP_CLOCKWISE, TOP_ANTI_CLOCKWISE,
+                      BOTTOM_CLOCKWISE, BOTTOM_ANTI_CLOCKWISE)
 }

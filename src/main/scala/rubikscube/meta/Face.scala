@@ -1,7 +1,18 @@
 package rubikscube.meta
 
-object Face extends Enumeration {
-  type Face = Value
+case class Face private (face: String) {
+  override def toString(): String = {
+    face
+  }
+}
 
-  val FRONT, BACK, LEFT, RIGHT, TOP, BOTTOM = Value
+object Face {
+  val FRONT = Face("FRONT")
+  val BACK = Face("BACK")
+  val LEFT = Face("LEFT")
+  val RIGHT = Face("RIGHT")
+  val TOP = Face("TOP")
+  val BOTTOM = Face("BOTTOM")
+
+  val ALL_FACES = Set(FRONT, BACK, LEFT, RIGHT, TOP, BOTTOM)
 }

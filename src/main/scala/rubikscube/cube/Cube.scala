@@ -2,6 +2,7 @@ package rubikscube.cube
 
 import rubikscube.meta.Color._
 import rubikscube.meta.Move
+import rubikscube.meta.Face
 import rubikscube.meta.Face._
 import rubikscube.meta.Direction._
 import rubikscube.piece.{Edge, Vertex}
@@ -42,7 +43,8 @@ class Cube(val frontLayer: Layer, val backLayer: Layer, val leftLayer: Layer, va
       case RIGHT => Cube(rightLayer, leftLayer, frontLayer, backLayer, topLayer.reorient(RIGHT), bottomLayer.reorient(LEFT))
       case TOP => Cube(topLayer, bottomLayer.flipOrientation(), rightLayer.reorient(RIGHT), leftLayer.reorient(LEFT), frontLayer, backLayer.flipOrientation())
       case BOTTOM => Cube(bottomLayer, topLayer.flipOrientation(), rightLayer.reorient(LEFT), leftLayer.reorient(RIGHT), backLayer.flipOrientation(), frontLayer)
-      case _ => this // Only remaining FACE is FRONT
+      case FRONT => this      // Front reoriented to Front => Front
+      case _ => throw new IllegalStateException("Illegal Face!")
     }
   }
 
@@ -70,7 +72,7 @@ class Cube(val frontLayer: Layer, val backLayer: Layer, val leftLayer: Layer, va
 
             new Cube(newFrontLayer, backLayer, newLeftLayer, newRightLayer, newTopLayer, newBottomLayer)
           }
-          case ANTICLOCKWISE => {
+          case ANTI_CLOCKWISE => {
             val newFrontLayer = frontLayer.move(mv.direction)
             val newLeftLayer = new Layer(leftLayer.faceColor,
               leftLayer.topLeftVertex, topLayer.topLeftVertex, topLayer.topRightVertex, leftLayer.bottomLeftVertex,
@@ -90,6 +92,7 @@ class Cube(val frontLayer: Layer, val backLayer: Layer, val leftLayer: Layer, va
 
             new Cube(newFrontLayer, backLayer, newLeftLayer, newRightLayer, newTopLayer, newBottomLayer)
           }
+          case _ => throw new IllegalStateException("Illegal Direction!")
         }
       }
       case BACK => {
@@ -127,6 +130,7 @@ class Cube(val frontLayer: Layer, val backLayer: Layer, val leftLayer: Layer, va
         // And reorient (BOTTOM becomes FRONT) it back
         cr.reorientToFront(BOTTOM)
       }
+      case _ => throw new IllegalStateException("Illegal Face!")
     }
   }
 

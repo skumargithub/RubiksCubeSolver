@@ -61,7 +61,7 @@ class LayerSuite extends FunSuite {
       topLeftVertex, topRightVertex, bottomRightVertex, bottomLeftVertex,
       topEdge, rightEdge, bottomEdge, leftEdge)
 
-    val l2 = l1.move(CLOCKWISE).move(ANTICLOCKWISE)
+    val l2 = l1.move(CLOCKWISE).move(ANTI_CLOCKWISE)
     assert(l1.equals(l2) == true)
   }
 }

@@ -24,7 +24,7 @@ class EdgeSuite extends FunSuite {
   test("Edge partial equality") {
     val e1 = new Edge(WHITE, ORANGE, true, false)
 
-    for(c <- Color.values.filterNot(WHITE.equals _)) {
+    for(c <- Color.ALL_COLORS.filterNot(WHITE.equals _)) {
       val e2 = new Edge(WHITE, c, true, false)
       assert(e1.equals(e2) == true)
     }

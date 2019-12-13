@@ -44,13 +44,13 @@ class MoveSuite extends FunSuite {
     assert(cm.equals(cg) == true)
 
     // Now, move FRONT in ANTICLOCKWISE to get back the original cube
-    val c1 = cm.move(Move(FRONT, ANTICLOCKWISE))
+    val c1 = cm.move(Move(FRONT, ANTI_CLOCKWISE))
     //    println(s"Generated Move FRONT in CLOCKWISE direction\n ${cg}")
     assert(Cube.solvedCube.equals(c1) == true)
   }
 
   test("Move FRONT in ANTICLOCKWISE direction") {
-    val cm = Cube.solvedCube.move(Move(FRONT, ANTICLOCKWISE))
+    val cm = Cube.solvedCube.move(Move(FRONT, ANTI_CLOCKWISE))
     //    println(s"FRONT ANTICLOCKWISE\n ${cm}")
 
     val frontLayer = new Layer(WHITE,
@@ -120,13 +120,13 @@ class MoveSuite extends FunSuite {
     assert(cm.equals(cg) == true)
 
     // Now, move BACK in ANTICLOCKWISE to get back the original cube
-    val c1 = cm.move(Move(BACK, ANTICLOCKWISE))
+    val c1 = cm.move(Move(BACK, ANTI_CLOCKWISE))
     //    println(s"Generated Move FRONT in CLOCKWISE direction\n ${cg}")
     assert(Cube.solvedCube.equals(c1) == true)
   }
 
   test("Move BACK in ANTICLOCKWISE direction") {
-    val cm = Cube.solvedCube.move(Move(BACK, ANTICLOCKWISE))
+    val cm = Cube.solvedCube.move(Move(BACK, ANTI_CLOCKWISE))
 //    println(s"BACK ANTICLOCKWISE\n ${cm}")
 
     val frontLayer = new Layer(WHITE,
@@ -196,12 +196,12 @@ class MoveSuite extends FunSuite {
     assert(cm.equals(cg) == true)
 
     // Now, move LEFT in ANTICLOCKWISE to get back the original cube
-    val c1 = cm.move(Move(LEFT, ANTICLOCKWISE))
+    val c1 = cm.move(Move(LEFT, ANTI_CLOCKWISE))
     assert(Cube.solvedCube.equals(c1) == true)
   }
 
   test("Move LEFT in ANTICLOCKWISE direction") {
-    val cm = Cube.solvedCube.move(Move(LEFT, ANTICLOCKWISE))
+    val cm = Cube.solvedCube.move(Move(LEFT, ANTI_CLOCKWISE))
 //    println(s"LEFT ANTICLOCKWISE\n ${cm}")
 
     val frontLayer = new Layer(WHITE,
@@ -270,12 +270,12 @@ class MoveSuite extends FunSuite {
     assert(cm.equals(cg) == true)
 
     // Now, move RIGHT in ANTICLOCKWISE to get back the original cube
-    val c1 = cm.move(Move(RIGHT, ANTICLOCKWISE))
+    val c1 = cm.move(Move(RIGHT, ANTI_CLOCKWISE))
     assert(Cube.solvedCube.equals(c1) == true)
   }
 
   test("Move RIGHT in ANTICLOCKWISE direction") {
-    val cm = Cube.solvedCube.move(Move(RIGHT, ANTICLOCKWISE))
+    val cm = Cube.solvedCube.move(Move(RIGHT, ANTI_CLOCKWISE))
 //    println(s"RIGHT ANTICLOCKWISE\n ${cm}")
 
     val frontLayer = new Layer(WHITE,
@@ -344,12 +344,12 @@ class MoveSuite extends FunSuite {
     assert(cm.equals(cg) == true)
 
     // Now, move RIGHT in ANTICLOCKWISE to get back the original cube
-    val c1 = cm.move(Move(TOP, ANTICLOCKWISE))
+    val c1 = cm.move(Move(TOP, ANTI_CLOCKWISE))
     assert(Cube.solvedCube.equals(c1) == true)
   }
 
   test("Move TOP in ANTICLOCKWISE direction") {
-    val cm = Cube.solvedCube.move(Move.TOP_ANTICLOCKWISE)
+    val cm = Cube.solvedCube.move(Move.TOP_ANTI_CLOCKWISE)
 //    println(s"TOP ANTICLOCKWISE\n ${cm}")
 
     val frontLayer = new Layer(WHITE,
@@ -418,12 +418,12 @@ class MoveSuite extends FunSuite {
     assert(cm.equals(cg) == true)
 
     // Now, move RIGHT in ANTICLOCKWISE to get back the original cube
-    val c1 = cm.move(Move(BOTTOM, ANTICLOCKWISE))
+    val c1 = cm.move(Move(BOTTOM, ANTI_CLOCKWISE))
     assert(Cube.solvedCube.equals(c1) == true)
   }
 
   test("Move BOTTOM in ANTICLOCKWISE direction") {
-    val cm = Cube.solvedCube.move(Move.BOTTOM_ANTICLOCKWISE)
+    val cm = Cube.solvedCube.move(Move.BOTTOM_ANTI_CLOCKWISE)
 //    println(s"Moved BOTTOM ANTICLOCKWISE\n ${cm}")
 
     val frontLayer = new Layer(WHITE,
@@ -497,12 +497,12 @@ class MoveSuite extends FunSuite {
     assert(cm.equals(cg) == true)
 
     // Now, reverse all the moves to get back the original solved cube
-    val c1 = cm.move(Move.BOTTOM_ANTICLOCKWISE)
-               .move(Move.TOP_ANTICLOCKWISE)
-               .move(Move.RIGHT_ANTICLOCKWISE)
-               .move(Move.LEFT_ANTICLOCKWISE)
-               .move(Move.BACK_ANTICLOCKWISE)
-               .move(Move.FRONT_ANTICLOCKWISE)
+    val c1 = cm.move(Move.BOTTOM_ANTI_CLOCKWISE)
+               .move(Move.TOP_ANTI_CLOCKWISE)
+               .move(Move.RIGHT_ANTI_CLOCKWISE)
+               .move(Move.LEFT_ANTI_CLOCKWISE)
+               .move(Move.BACK_ANTI_CLOCKWISE)
+               .move(Move.FRONT_ANTI_CLOCKWISE)
     assert(Cube.solvedCube.equals(c1) == true)
   }
 }

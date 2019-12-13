@@ -18,11 +18,11 @@ class OneMoveSolverSuite extends FunSuite {
       val moves: Set[List[Move]] = solver.solve(start, Cube.solvedCube, 1)
       println(s"""moves.size: ${moves.size}, moves:\n${moves.mkString("\n")}""")
 
-      assert(moves.size == 1 && moves.contains(List(Move.FRONT_ANTICLOCKWISE)))
+      assert(moves.size == 1 && moves.contains(List(Move.FRONT_ANTI_CLOCKWISE)))
     }
 
     {
-      val start = Cube.solvedCube.move(Move.FRONT_ANTICLOCKWISE)
+      val start = Cube.solvedCube.move(Move.FRONT_ANTI_CLOCKWISE)
 
       val moves: Set[List[Move]] = solver.solve(start, Cube.solvedCube, 1)
       println(s"""moves.size: ${moves.size}, moves:\n${moves.mkString("\n")}""")
@@ -37,11 +37,11 @@ class OneMoveSolverSuite extends FunSuite {
       val moves: Set[List[Move]] = solver.solve(start, Cube.solvedCube, 1)
       println(s"""moves.size: ${moves.size}, moves:\n${moves.mkString("\n")}""")
 
-      assert(moves.size == 1 && moves.contains(List(Move.BACK_ANTICLOCKWISE)))
+      assert(moves.size == 1 && moves.contains(List(Move.BACK_ANTI_CLOCKWISE)))
     }
 
     {
-      val start = Cube.solvedCube.move(Move.BACK_ANTICLOCKWISE)
+      val start = Cube.solvedCube.move(Move.BACK_ANTI_CLOCKWISE)
 
       val moves: Set[List[Move]] = solver.solve(start, Cube.solvedCube, 1)
       println(s"""moves.size: ${moves.size}, moves:\n${moves.mkString("\n")}""")
@@ -56,11 +56,11 @@ class OneMoveSolverSuite extends FunSuite {
       val moves: Set[List[Move]] = solver.solve(start, Cube.solvedCube, 1)
       println(s"""moves.size: ${moves.size}, moves:\n${moves.mkString("\n")}""")
 
-      assert(moves.size == 1 && moves.contains(List(Move.LEFT_ANTICLOCKWISE)))
+      assert(moves.size == 1 && moves.contains(List(Move.LEFT_ANTI_CLOCKWISE)))
     }
 
     {
-      val start = Cube.solvedCube.move(Move.LEFT_ANTICLOCKWISE)
+      val start = Cube.solvedCube.move(Move.LEFT_ANTI_CLOCKWISE)
 
       val moves: Set[List[Move]] = solver.solve(start, Cube.solvedCube, 1)
       println(s"""moves.size: ${moves.size}, moves:\n${moves.mkString("\n")}""")
@@ -75,11 +75,11 @@ class OneMoveSolverSuite extends FunSuite {
       val moves: Set[List[Move]] = solver.solve(start, Cube.solvedCube, 1)
       println(s"""moves.size: ${moves.size}, moves:\n${moves.mkString("\n")}""")
 
-      assert(moves.size == 1 && moves.contains(List(Move.RIGHT_ANTICLOCKWISE)))
+      assert(moves.size == 1 && moves.contains(List(Move.RIGHT_ANTI_CLOCKWISE)))
     }
 
     {
-      val start = Cube.solvedCube.move(Move.RIGHT_ANTICLOCKWISE)
+      val start = Cube.solvedCube.move(Move.RIGHT_ANTI_CLOCKWISE)
 
       val moves: Set[List[Move]] = solver.solve(start, Cube.solvedCube, 1)
       println(s"""moves.size: ${moves.size}, moves:\n${moves.mkString("\n")}""")
@@ -94,11 +94,11 @@ class OneMoveSolverSuite extends FunSuite {
       val moves: Set[List[Move]] = solver.solve(start, Cube.solvedCube, 1)
       println(s"""moves.size: ${moves.size}, moves:\n${moves.mkString("\n")}""")
 
-      assert(moves.size == 1 && moves.contains(List(Move.TOP_ANTICLOCKWISE)))
+      assert(moves.size == 1 && moves.contains(List(Move.TOP_ANTI_CLOCKWISE)))
     }
 
     {
-      val start = Cube.solvedCube.move(Move.TOP_ANTICLOCKWISE)
+      val start = Cube.solvedCube.move(Move.TOP_ANTI_CLOCKWISE)
 
       val moves: Set[List[Move]] = solver.solve(start, Cube.solvedCube, 1)
       println(s"""moves.size: ${moves.size}, moves:\n${moves.mkString("\n")}""")
@@ -113,11 +113,11 @@ class OneMoveSolverSuite extends FunSuite {
       val moves: Set[List[Move]] = solver.solve(start, Cube.solvedCube, 1)
       println(s"""moves.size: ${moves.size}, moves:\n${moves.mkString("\n")}""")
 
-      assert(moves.size == 1 && moves.contains(List(Move.BOTTOM_ANTICLOCKWISE)))
+      assert(moves.size == 1 && moves.contains(List(Move.BOTTOM_ANTI_CLOCKWISE)))
     }
 
     {
-      val start = Cube.solvedCube.move(Move.BOTTOM_ANTICLOCKWISE)
+      val start = Cube.solvedCube.move(Move.BOTTOM_ANTI_CLOCKWISE)
 
       val moves: Set[List[Move]] = solver.solve(start, Cube.solvedCube, 1)
       println(s"""moves.size: ${moves.size}, moves:\n${moves.mkString("\n")}""")

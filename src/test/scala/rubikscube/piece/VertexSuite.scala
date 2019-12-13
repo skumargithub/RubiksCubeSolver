@@ -23,7 +23,7 @@ class VertexSuite extends FunSuite {
   test("Vertex partial equality 2 faces") {
     val v1 = new Vertex(WHITE, ORANGE, GREEN, true, true, false)
 
-    for(c <- Color.values.filterNot(GREEN.equals _)) {
+    for(c <- Color.ALL_COLORS.filterNot(GREEN.equals _)) {
       val v2 = new Vertex(WHITE, ORANGE, c, true, true, false)
       assert(v1.equals(v2) == true)
     }
@@ -32,7 +32,7 @@ class VertexSuite extends FunSuite {
   test("Vertex partial equality 1 face") {
     val v1 = new Vertex(WHITE, ORANGE, GREEN, true, false, false)
 
-    for(c <- Color.values.filterNot(GREEN.equals _)) {
+    for(c <- Color.ALL_COLORS.filterNot(GREEN.equals _)) {
       val v2 = new Vertex(WHITE, BLUE, c, true, true, false)
       assert(v1.equals(v2) == true)
     }

@@ -1,12 +1,18 @@
 package rubikscube.meta
 
-object Color extends Enumeration {
-  type Color = Value
+case class Color private (color: String) {
+  override def toString(): String = {
+    color
+  }
+}
 
-  val WHITE = Value("W")
-  val RED = Value("R")
-  val ORANGE = Value("O")
-  val GREEN = Value("G")
-  val BLUE = Value("B")
-  val YELLOW = Value("Y")
+object Color {
+  val WHITE = Color("W")
+  val RED = Color("R")
+  val ORANGE = Color("O")
+  val GREEN = Color("G")
+  val BLUE = Color("B")
+  val YELLOW = Color("Y")
+
+  val ALL_COLORS = Set(WHITE, RED, ORANGE, GREEN, BLUE, YELLOW)
 }

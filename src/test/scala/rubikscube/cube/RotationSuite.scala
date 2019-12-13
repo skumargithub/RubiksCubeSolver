@@ -46,7 +46,7 @@ class RotationSuite extends FunSuite {
     assert(cr.equals(cg) == true)
 
     // Move the Front layer anti-clockwise to get back the solved cube
-    val c3 = cr.move(Move(FRONT, ANTICLOCKWISE))
+    val c3 = cr.move(Move(FRONT, ANTI_CLOCKWISE))
     assert(c3.equals(Cube.solvedCube) == true)
 
     // Move the Front layer of a solved cube clockwise 4 times to get back the solved cube
@@ -56,7 +56,7 @@ class RotationSuite extends FunSuite {
   }
 
   test("Front layer anti-clockwise rotation") {
-    val cr = Cube.solvedCube.move(Move(FRONT, ANTICLOCKWISE))
+    val cr = Cube.solvedCube.move(Move(FRONT, ANTI_CLOCKWISE))
 //    println(s"Front anti-clockwise rotation\n ${cr}")
     assert(Cube.solvedCube.equals(cr) == false)
 

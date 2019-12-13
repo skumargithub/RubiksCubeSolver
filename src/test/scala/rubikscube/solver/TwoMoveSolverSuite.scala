@@ -24,10 +24,10 @@ class TwoMoveSolverSuite extends FunSuite {
       println(s"moves: ${moves}")
 
       assert(moves.size == 2)
-      assert(moves.contains(List(Move.FRONT_ANTICLOCKWISE, Move.FRONT_ANTICLOCKWISE)) && moves.contains(List(Move.FRONT_CLOCKWISE, Move.FRONT_CLOCKWISE)))
+      assert(moves.contains(List(Move.FRONT_ANTI_CLOCKWISE, Move.FRONT_ANTI_CLOCKWISE)) && moves.contains(List(Move.FRONT_CLOCKWISE, Move.FRONT_CLOCKWISE)))
     }
     {
-      val start = Cube.solvedCube.move(Move.FRONT_ANTICLOCKWISE).move(Move.FRONT_ANTICLOCKWISE)
+      val start = Cube.solvedCube.move(Move.FRONT_ANTI_CLOCKWISE).move(Move.FRONT_ANTI_CLOCKWISE)
 
       // Not possible to solve this in 1 move
       val imoves: Set[List[Move]] = solver.solve(start, Cube.solvedCube, 1)
@@ -37,7 +37,7 @@ class TwoMoveSolverSuite extends FunSuite {
       println(s"moves: ${moves}")
 
       assert(moves.size == 2)
-      assert(moves.contains(List(Move.FRONT_ANTICLOCKWISE, Move.FRONT_ANTICLOCKWISE)) && moves.contains(List(Move.FRONT_CLOCKWISE, Move.FRONT_CLOCKWISE)))
+      assert(moves.contains(List(Move.FRONT_ANTI_CLOCKWISE, Move.FRONT_ANTI_CLOCKWISE)) && moves.contains(List(Move.FRONT_CLOCKWISE, Move.FRONT_CLOCKWISE)))
     }
 
     // Back
@@ -52,10 +52,10 @@ class TwoMoveSolverSuite extends FunSuite {
       println(s"moves: ${moves}")
 
       assert(moves.size == 2)
-      assert(moves.contains(List(Move.BACK_ANTICLOCKWISE, Move.BACK_ANTICLOCKWISE)) && moves.contains(List(Move.BACK_CLOCKWISE, Move.BACK_CLOCKWISE)))
+      assert(moves.contains(List(Move.BACK_ANTI_CLOCKWISE, Move.BACK_ANTI_CLOCKWISE)) && moves.contains(List(Move.BACK_CLOCKWISE, Move.BACK_CLOCKWISE)))
     }
     {
-      val start = Cube.solvedCube.move(Move.BOTTOM_ANTICLOCKWISE).move(Move.BOTTOM_ANTICLOCKWISE)
+      val start = Cube.solvedCube.move(Move.BOTTOM_ANTI_CLOCKWISE).move(Move.BOTTOM_ANTI_CLOCKWISE)
 
       // Not possible to solve this in 1 move
       val imoves: Set[List[Move]] = solver.solve(start, Cube.solvedCube, 1)
@@ -65,7 +65,7 @@ class TwoMoveSolverSuite extends FunSuite {
       println(s"moves: ${moves}")
 
       assert(moves.size == 2)
-      assert(moves.contains(List(Move.BOTTOM_ANTICLOCKWISE, Move.BOTTOM_ANTICLOCKWISE)) && moves.contains(List(Move.BOTTOM_CLOCKWISE, Move.BOTTOM_CLOCKWISE)))
+      assert(moves.contains(List(Move.BOTTOM_ANTI_CLOCKWISE, Move.BOTTOM_ANTI_CLOCKWISE)) && moves.contains(List(Move.BOTTOM_CLOCKWISE, Move.BOTTOM_CLOCKWISE)))
     }
 
     // Left
@@ -80,10 +80,10 @@ class TwoMoveSolverSuite extends FunSuite {
       println(s"moves: ${moves}")
 
       assert(moves.size == 2)
-      assert(moves.contains(List(Move.LEFT_ANTICLOCKWISE, Move.LEFT_ANTICLOCKWISE)) || moves.contains(List(Move.LEFT_CLOCKWISE, Move.LEFT_CLOCKWISE)))
+      assert(moves.contains(List(Move.LEFT_ANTI_CLOCKWISE, Move.LEFT_ANTI_CLOCKWISE)) || moves.contains(List(Move.LEFT_CLOCKWISE, Move.LEFT_CLOCKWISE)))
     }
     {
-      val start = Cube.solvedCube.move(Move.LEFT_ANTICLOCKWISE).move(Move.LEFT_ANTICLOCKWISE)
+      val start = Cube.solvedCube.move(Move.LEFT_ANTI_CLOCKWISE).move(Move.LEFT_ANTI_CLOCKWISE)
 
       // Not possible to solve this in 1 move
       val imoves: Set[List[Move]] = solver.solve(start, Cube.solvedCube, 1)
@@ -93,7 +93,7 @@ class TwoMoveSolverSuite extends FunSuite {
       println(s"moves: ${moves}")
 
       assert(moves.size == 2)
-      assert(moves.contains(List(Move.LEFT_ANTICLOCKWISE, Move.LEFT_ANTICLOCKWISE)) || moves.contains(List(Move.LEFT_CLOCKWISE, Move.LEFT_CLOCKWISE)))
+      assert(moves.contains(List(Move.LEFT_ANTI_CLOCKWISE, Move.LEFT_ANTI_CLOCKWISE)) || moves.contains(List(Move.LEFT_CLOCKWISE, Move.LEFT_CLOCKWISE)))
     }
 
     // Right
@@ -108,10 +108,10 @@ class TwoMoveSolverSuite extends FunSuite {
       println(s"moves: ${moves}")
 
       assert(moves.size == 2)
-      assert(moves.contains(List(Move.RIGHT_ANTICLOCKWISE, Move.RIGHT_ANTICLOCKWISE)) || moves.contains(List(Move.RIGHT_CLOCKWISE, Move.RIGHT_CLOCKWISE)))
+      assert(moves.contains(List(Move.RIGHT_ANTI_CLOCKWISE, Move.RIGHT_ANTI_CLOCKWISE)) || moves.contains(List(Move.RIGHT_CLOCKWISE, Move.RIGHT_CLOCKWISE)))
     }
     {
-      val start = Cube.solvedCube.move(Move.RIGHT_ANTICLOCKWISE).move(Move.RIGHT_ANTICLOCKWISE)
+      val start = Cube.solvedCube.move(Move.RIGHT_ANTI_CLOCKWISE).move(Move.RIGHT_ANTI_CLOCKWISE)
 
       // Not possible to solve this in 1 move
       val imoves: Set[List[Move]] = solver.solve(start, Cube.solvedCube, 1)
@@ -121,7 +121,7 @@ class TwoMoveSolverSuite extends FunSuite {
       println(s"moves: ${moves}")
 
       assert(moves.size == 2)
-      assert(moves.contains(List(Move.RIGHT_ANTICLOCKWISE, Move.RIGHT_ANTICLOCKWISE)) || moves.contains(List(Move.RIGHT_CLOCKWISE, Move.RIGHT_CLOCKWISE)))
+      assert(moves.contains(List(Move.RIGHT_ANTI_CLOCKWISE, Move.RIGHT_ANTI_CLOCKWISE)) || moves.contains(List(Move.RIGHT_CLOCKWISE, Move.RIGHT_CLOCKWISE)))
     }
 
     // Top
@@ -136,10 +136,10 @@ class TwoMoveSolverSuite extends FunSuite {
       println(s"moves: ${moves}")
 
       assert(moves.size == 2)
-      assert(moves.contains(List(Move.TOP_ANTICLOCKWISE, Move.TOP_ANTICLOCKWISE)) || moves.contains(List(Move.TOP_CLOCKWISE, Move.TOP_CLOCKWISE)))
+      assert(moves.contains(List(Move.TOP_ANTI_CLOCKWISE, Move.TOP_ANTI_CLOCKWISE)) || moves.contains(List(Move.TOP_CLOCKWISE, Move.TOP_CLOCKWISE)))
     }
     {
-      val start = Cube.solvedCube.move(Move.TOP_ANTICLOCKWISE).move(Move.TOP_ANTICLOCKWISE)
+      val start = Cube.solvedCube.move(Move.TOP_ANTI_CLOCKWISE).move(Move.TOP_ANTI_CLOCKWISE)
 
       // Not possible to solve this in 1 move
       val imoves: Set[List[Move]] = solver.solve(start, Cube.solvedCube, 1)
@@ -149,7 +149,7 @@ class TwoMoveSolverSuite extends FunSuite {
       println(s"moves: ${moves}")
 
       assert(moves.size == 2)
-      assert(moves.contains(List(Move.TOP_ANTICLOCKWISE, Move.TOP_ANTICLOCKWISE)) || moves.contains(List(Move.TOP_CLOCKWISE, Move.TOP_CLOCKWISE)))
+      assert(moves.contains(List(Move.TOP_ANTI_CLOCKWISE, Move.TOP_ANTI_CLOCKWISE)) || moves.contains(List(Move.TOP_CLOCKWISE, Move.TOP_CLOCKWISE)))
     }
 
     // Bottom
@@ -164,10 +164,10 @@ class TwoMoveSolverSuite extends FunSuite {
       println(s"moves: ${moves}")
 
       assert(moves.size == 2)
-      assert(moves.contains(List(Move.BOTTOM_ANTICLOCKWISE, Move.BOTTOM_ANTICLOCKWISE)) || moves.contains(List(Move.BOTTOM_CLOCKWISE, Move.BOTTOM_CLOCKWISE)))
+      assert(moves.contains(List(Move.BOTTOM_ANTI_CLOCKWISE, Move.BOTTOM_ANTI_CLOCKWISE)) || moves.contains(List(Move.BOTTOM_CLOCKWISE, Move.BOTTOM_CLOCKWISE)))
     }
     {
-      val start = Cube.solvedCube.move(Move.BOTTOM_ANTICLOCKWISE).move(Move.BOTTOM_ANTICLOCKWISE)
+      val start = Cube.solvedCube.move(Move.BOTTOM_ANTI_CLOCKWISE).move(Move.BOTTOM_ANTI_CLOCKWISE)
 
       // Not possible to solve this in 1 move
       val imoves: Set[List[Move]] = solver.solve(start, Cube.solvedCube, 1)
@@ -177,7 +177,7 @@ class TwoMoveSolverSuite extends FunSuite {
       println(s"moves: ${moves}")
 
       assert(moves.size == 2)
-      assert(moves.contains(List(Move.BOTTOM_ANTICLOCKWISE, Move.BOTTOM_ANTICLOCKWISE)) || moves.contains(List(Move.BOTTOM_CLOCKWISE, Move.BOTTOM_CLOCKWISE)))
+      assert(moves.contains(List(Move.BOTTOM_ANTI_CLOCKWISE, Move.BOTTOM_ANTI_CLOCKWISE)) || moves.contains(List(Move.BOTTOM_CLOCKWISE, Move.BOTTOM_CLOCKWISE)))
     }
   }
 }

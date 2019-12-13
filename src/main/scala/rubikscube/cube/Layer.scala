@@ -1,8 +1,8 @@
 package rubikscube.cube
 
 import rubikscube.meta.Color._
+import rubikscube.meta._
 import rubikscube.meta.Direction._
-import rubikscube.meta.Move
 import rubikscube.piece.{Edge, Vertex}
 import rubikscube.meta.Face._
 
@@ -16,10 +16,11 @@ sealed class Layer(val faceColor: Color,
         new Layer(faceColor,
                   bottomLeftVertex, topLeftVertex, topRightVertex, bottomRightVertex,
                   leftEdge, topEdge, rightEdge, bottomEdge)
-      case ANTICLOCKWISE =>
+      case ANTI_CLOCKWISE =>
         new Layer(faceColor,
           topRightVertex, bottomRightVertex, bottomLeftVertex, topLeftVertex,
           rightEdge, bottomEdge, leftEdge, topEdge)
+      case _ => throw new IllegalStateException("Unknown Direction")
     }
   }
 
@@ -37,8 +38,8 @@ sealed class Layer(val faceColor: Color,
       case RIGHT => { // Junk for now
         new Layer(faceColor, bottomLeftVertex, topLeftVertex, topRightVertex, bottomRightVertex, leftEdge, topEdge, rightEdge, bottomEdge)
       }
+      case _ => throw new IllegalStateException("Unexpected face?!@?")
     }
-
   }
 
   def top(): (Vertex, Edge, Vertex) = {
